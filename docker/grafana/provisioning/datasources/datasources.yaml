@@ -1,0 +1,17 @@
+apiVersion: 1
+
+datasources:
+  - name: Prometheus
+    type: prometheus
+    access: proxy
+    url: http://host.docker.internal:9090
+    editable: false
+    jsonData:
+      exemplarTraceIdDestinations:
+        - name: trace_id
+          datasourceUid: zipkin
+  - name: Zipkin
+    type: zipkin
+    uid: zipkin
+    url: http://host.docker.internal:9411
+    readOnly: true
