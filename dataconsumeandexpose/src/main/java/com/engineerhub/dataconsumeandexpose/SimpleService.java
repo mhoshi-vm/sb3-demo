@@ -11,8 +11,11 @@ public class SimpleService {
     private static final Logger log = LoggerFactory.getLogger(SimpleService.class);
     SimpleRepository simpleRepository;
 
-    public SimpleService(SimpleRepository simpleRepository) {
+    SimpleLogic simpleLogic;
+
+    public SimpleService(SimpleRepository simpleRepository, SimpleLogic simpleLogic) {
         this.simpleRepository = simpleRepository;
+        this.simpleLogic = simpleLogic;
     }
 
     public Iterable<SimpleEntity> getAll(){
@@ -24,10 +27,11 @@ public class SimpleService {
     }
 
     @RabbitListener(queues = "demoQueue")
-    public void consume(String data){
+    public void consume(String data) throws InterruptedException {
         log.info("new data from queue");
         SimpleEntity simpleEntity = new SimpleEntity();
         simpleEntity.setData(data);
+        simpleLogic.logic();
         save(simpleEntity);
     }
 }
