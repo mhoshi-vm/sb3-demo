@@ -6,13 +6,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class Controller {
+public class SimpleController {
 
-    private static final Logger log = LoggerFactory.getLogger(Controller.class);
+    private static final Logger log = LoggerFactory.getLogger(SimpleController.class);
 
     SimpleService simpleService;
 
-    public Controller(SimpleService simpleService) {
+    public SimpleController(SimpleService simpleService) {
         this.simpleService = simpleService;
     }
 
