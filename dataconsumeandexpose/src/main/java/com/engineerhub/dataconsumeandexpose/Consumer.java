@@ -2,9 +2,9 @@ package com.engineerhub.dataconsumeandexpose;
 
 import org.springframework.amqp.core.Queue;
 import org.springframework.context.annotation.Bean;
-import org.springframework.stereotype.Component;
+import org.springframework.context.annotation.Configuration;
 
-@Component
+@Configuration
 public class Consumer {
 
     @Bean
